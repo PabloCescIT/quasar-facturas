@@ -7,6 +7,38 @@
       </q-toolbar>
     </q-header>
 
+    <q-footer elevated class="bg-white text-black">
+        <q-tabs
+          class="q-my-md"
+        >
+          <div>
+            <q-avatar
+              size="30px"
+              class="q-mr-sm"
+            >
+              <img src="/src/assets/nopas-logo.png" alt="Logo">
+            </q-avatar>
+            © 2025 Nopas
+          </div>
+          <q-btn
+            class="q-px-none q-mx-md"
+            dense
+            icon="text_snippet"
+            flat
+            label="Aviso legal"
+            style="font-size: 10px;"
+          />
+          <q-btn
+            class="q-px-none"
+            dense
+            icon="cookie"
+            flat
+            label="Política de cookies"
+            style="font-size: 10px;"
+          />
+        </q-tabs>
+      </q-footer>
+
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-primary">
       <q-list>
         <q-expansion-item icon="storefront" label="Compra" style="color: white" class="q-mb-sm">
@@ -112,6 +144,7 @@
 
 <script setup>
 import { ref } from 'vue'
+// import nopasLogo from 'src/assets/nopas-logo.png';
 
 const leftDrawerOpen = ref(false)
 
