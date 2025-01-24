@@ -1,49 +1,53 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="row justify-between items-center">
       <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+        <q-btn flat dense round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Pablo Company SL </q-toolbar-title>
+        <q-btn flat dense round icon="fullscreen" @click="toggleFullScreen" />
+        <q-btn flat dense round icon="account_circle" />
       </q-toolbar>
     </q-header>
 
     <q-footer elevated class="bg-white text-black">
-        <q-tabs
-          class="q-my-md"
-        >
-          <div>
-            <q-avatar
-              size="30px"
-              class="q-mr-sm"
-            >
-              <img src="/src/assets/nopas-logo.png" alt="Logo">
-            </q-avatar>
-            © 2025 Nopas
-          </div>
-          <q-btn
-            class="q-px-none q-mx-md"
-            dense
-            icon="text_snippet"
-            flat
-            label="Aviso legal"
-            style="font-size: 10px;"
-          />
-          <q-btn
-            class="q-px-none"
-            dense
-            icon="cookie"
-            flat
-            label="Política de cookies"
-            style="font-size: 10px;"
-          />
-        </q-tabs>
-      </q-footer>
+      <q-tabs class="q-my-md">
+        <div>
+          <q-avatar size="30px" class="q-mr-sm">
+            <img src="/src/assets/nopas-logo.png" alt="Logo" />
+          </q-avatar>
+          © 2025 Nopas
+        </div>
+        <q-btn
+          class="q-px-none q-mx-md"
+          dense
+          icon="text_snippet"
+          flat
+          label="Aviso legal"
+          style="font-size: 10px"
+        />
+        <q-btn
+          class="q-px-none"
+          dense
+          icon="cookie"
+          flat
+          label="Política de cookies"
+          style="font-size: 10px"
+        />
+      </q-tabs>
+    </q-footer>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-primary">
       <q-list>
-        <q-expansion-item icon="storefront" label="Compra" style="color: white" class="q-mb-sm">
+        <q-expansion-item
+          default-opened
+          icon="storefront"
+          label="Compra"
+          style="color: white"
+          class="q-mb-sm"
+        >
           <q-card class="bg-primary">
             <q-btn
+              default-opened
               align="left"
               icon="email"
               label="Proveedores"
@@ -59,7 +63,13 @@
             />
           </q-card>
         </q-expansion-item>
-        <q-expansion-item icon="sell" label="Venta" style="color: white" class="q-mb-sm">
+        <q-expansion-item
+          default-opened
+          icon="sell"
+          label="Venta"
+          style="color: white"
+          class="q-mb-sm"
+        >
           <q-card class="bg-primary">
             <q-btn
               align="left"
@@ -92,6 +102,7 @@
           </q-card>
         </q-expansion-item>
         <q-expansion-item
+          default-opened
           icon="query_stats"
           label="Estadísticas"
           style="color: white"
@@ -114,7 +125,13 @@
             />
           </q-card>
         </q-expansion-item>
-        <q-expansion-item icon="business" label="Empresa" style="color: white" class="q-mb-sm">
+        <q-expansion-item
+          default-opened
+          icon="business"
+          label="Empresa"
+          style="color: white"
+          class="q-mb-sm"
+        >
           <q-card class="bg-primary">
             <q-btn
               align="left"
@@ -144,12 +161,24 @@
 
 <script setup>
 import { ref } from 'vue'
-// import nopasLogo from 'src/assets/nopas-logo.png';
+import { useQuasar } from 'quasar'
 
-const leftDrawerOpen = ref(false)
+const $q = useQuasar()
+
+const leftDrawerOpen = ref(true)
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
+}
+
+const toggleFullScreen = () => {
+  if ($q && $q.fullscreen) {
+    if ($q.fullscreen.isActive) {
+      $q.fullscreen.exit()
+    } else {
+      $q.fullscreen.request()
+    }
+  }
 }
 </script>
 
