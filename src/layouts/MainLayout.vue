@@ -154,7 +154,7 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <FacturasDeVenta />
     </q-page-container>
   </q-layout>
 </template>
@@ -162,6 +162,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
+import FacturasDeVenta from 'src/components/FacturasDeVenta.vue'
 
 const $q = useQuasar()
 
