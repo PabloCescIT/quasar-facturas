@@ -93,6 +93,7 @@
                 stack
                 dense
                 flat
+                @click="showNuevaFactura = true"
               />
             </div>
           </div>
@@ -172,6 +173,24 @@
               </q-tr>
             </template>
           </q-table>
+
+          <q-dialog v-model="showNuevaFactura">
+            <q-card style="width: 75vw">
+              <q-card-section class="q-py-md bg-primary row justify-between items-center">
+                <div class="text-white text-h6 q-pa-sm">Factura de Venta:</div>
+                <q-btn flat round icon="close" color="white" v-close-popup />
+              </q-card-section>
+              <q-separator />
+              <q-card-section class="q-ma-md bg-grey-2 row">
+                <div class="col-6">
+                  <q-card-section class="bg-grey-4 q-mr-sm" flat> </q-card-section>
+                </div>
+                <div class="col-6">
+                  <q-card-section class="bg-grey-3" flat> </q-card-section>
+                </div>
+              </q-card-section>
+            </q-card>
+          </q-dialog>
         </div>
       </div>
     </q-card-section>
@@ -186,6 +205,7 @@ export default {
     const fechaInicio = ref(null)
     const fechaFinal = ref(null)
     const estado = ref(null)
+    const showNuevaFactura = ref(false)
 
     const options_estado = ref(['Borrador', 'Factura', 'Pendiente de pago', 'Cobrada'])
 
@@ -249,6 +269,7 @@ export default {
       rows_facturasVenta,
       formatValue,
       totales,
+      showNuevaFactura,
     }
   },
 }
