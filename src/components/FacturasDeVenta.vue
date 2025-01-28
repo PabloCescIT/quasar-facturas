@@ -174,19 +174,69 @@
             </template>
           </q-table>
 
-          <q-dialog v-model="showNuevaFactura">
-            <q-card style="width: 75vw">
-              <q-card-section class="q-py-md bg-primary row justify-between items-center">
-                <div class="text-white text-h6 q-pa-sm">Factura de Venta:</div>
-                <q-btn flat round icon="close" color="white" v-close-popup />
-              </q-card-section>
-              <q-separator />
-              <q-card-section class="q-ma-md bg-grey-2 row">
-                <div class="col-6">
-                  <q-card-section class="bg-grey-4 q-mr-sm" flat> </q-card-section>
+          <q-dialog
+            v-model="showNuevaFactura"
+          >
+            <q-card
+              style="width:68vw; max-width: 100%; "
+            >
+            <q-card-section
+              class="q-py-sm q-px-sm bg-primary"
+              style="display: flex; align-items: center; justify-content: space-between;"
+            >
+
+              <div class="text-white text-h6 q-pa-sm">
+                Factura de Venta:
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 10px;">
+
+                <div class="text-weight-bold text-white">
+                  Estado factura:
                 </div>
-                <div class="col-6">
-                  <q-card-section class="bg-grey-3" flat> </q-card-section>
+
+                <q-select
+                  filled
+                  dense
+                  v-model="model"
+                  :options="options_estado"
+                  label="Estado"
+                  style="width: 120px;"
+                  class="bg-grey-5"
+                />
+
+                <q-btn
+                  flat
+                  round
+                  icon="close"
+                  color="white"
+                  v-close-popup
+                />
+              </div>
+            </q-card-section>
+              <q-separator />
+              <q-card-section
+                class="q-pa-sm q-ma-md bg-grey-2 row"
+              >
+                <div
+                  class="col-6"
+                >
+                  <q-card-section
+                    class="bg-grey-4 q-mr-sm"
+                    flat
+                  >
+                  <DatosEmpresa/>
+                  </q-card-section>
+                </div>
+                <div
+                  class="col-6"
+                >
+                  <q-card-section
+                    class="bg-grey-3"
+                    flat
+                  >
+                  <DatosCliente/>
+                  </q-card-section>
                 </div>
               </q-card-section>
             </q-card>
@@ -199,8 +249,17 @@
 
 <script>
 import { ref, computed } from 'vue'
+import DatosEmpresa from './DatosEmpresa.vue'
+import DatosCliente from './DatosCliente.vue';
+
 
 export default {
+
+  components: {
+    DatosEmpresa,
+    DatosCliente
+  },
+
   setup() {
     const fechaInicio = ref(null)
     const fechaFinal = ref(null)
