@@ -93,7 +93,7 @@
                 stack
                 dense
                 flat
-                @click="showNuevaFactura = true"
+                @click="showNuevaFactura = true; nuevaFactura = true; estado_nueva = 'Borrador'"
               />
             </div>
           </div>
@@ -198,11 +198,12 @@
                 <q-select
                   filled
                   dense
-                  v-model="model"
+                  v-model="estado_nueva"
                   :options="options_estado"
                   label="Estado"
-                  style="width: 120px;"
+                  style="width: 150px;"
                   class="bg-grey-5"
+                  :disable="nuevaFactura"
                 />
 
                 <q-btn
@@ -264,7 +265,9 @@ export default {
     const fechaInicio = ref(null)
     const fechaFinal = ref(null)
     const estado = ref(null)
+    const estado_nueva = ref(null)
     const showNuevaFactura = ref(false)
+    const nuevaFactura = ref(false)
 
     const options_estado = ref(['Borrador', 'Factura', 'Pendiente de pago', 'Cobrada'])
 
@@ -329,6 +332,8 @@ export default {
       formatValue,
       totales,
       showNuevaFactura,
+      estado_nueva,
+      nuevaFactura
     }
   },
 }

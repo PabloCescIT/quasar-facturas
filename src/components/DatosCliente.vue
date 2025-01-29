@@ -7,7 +7,6 @@
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between;">
 
-      <div>
         <q-select
           filled
           v-model="buscar_cliente"
@@ -19,41 +18,39 @@
           :options="options_cliente"
           @filter="filterFn"
           style="width: 450px;"
-          hint="Escribe para buscar clientes"
-
+          hint="Escribe para buscar"
         >
 
           <template v-slot:no-option>
             <q-item>
               <q-item-section class="text-grey">
-                No existe este clinete
+                No existe este cliente
               </q-item-section>
             </q-item>
           </template>
 
         </q-select>
-        </div>
 
-
-        <div style="display: flex; align-items: center;">
-
-          <div>
+          <div
+            class="items-center q-mb-md"
+          >
             <q-btn
               round
               color="primary"
               icon="add"
-              class="q-mx-md"
             />
           </div>
 
-          <div>
+          <div
+            class="items-center q-mb-md"
+          >
             <q-btn
               flat
+              round
               color="primary"
               icon="close"
             />
           </div>
-        </div>
       </div>
   </div>
 </template>
