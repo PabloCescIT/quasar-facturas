@@ -93,7 +93,11 @@
                 stack
                 dense
                 flat
-                @click="showNuevaFactura = true; nuevaFactura = true; estado_nueva = 'Borrador'"
+                @click="
+                  showNuevaFactura = true
+                  nuevaFactura = true
+                  estado_nueva = 'Borrador'
+                "
               />
             </div>
           </div>
@@ -119,22 +123,8 @@
             <template v-slot:body-cell-acciones_factura="props">
               <q-td :props="props">
                 <div>
-                  <q-btn
-                    flat
-                    round
-                    dense
-                    size="md"
-                    color="grey-6"
-                    icon="delete"
-                  />
-                  <q-btn
-                    flat
-                    round
-                    dense
-                    size="md"
-                    color="grey-6"
-                    icon="email"
-                  />
+                  <q-btn flat round dense size="md" color="grey-6" icon="delete" />
+                  <q-btn flat round dense size="md" color="grey-6" icon="email" />
                   <q-btn
                     flat
                     round
@@ -196,69 +186,41 @@
             </template>
           </q-table>
 
-          <q-dialog
-            v-model="showNuevaFactura"
-          >
-            <q-card
-              style="width:68vw; max-width: 100%; "
-            >
-            <q-card-section
-              class="q-py-sm q-px-sm bg-primary"
-              style="display: flex; align-items: center; justify-content: space-between;"
-            >
-
-              <div class="text-white text-h6 q-pa-sm">
-                Factura de Venta:
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 10px;">
-
-                <div class="text-weight-bold text-white">
-                  Estado factura:
-                </div>
-
-                <q-select
-                  filled
-                  dense
-                  v-model="estado_nueva"
-                  :options="options_estado"
-                  label="Estado"
-                  style="width: 150px;"
-                  class="bg-grey-5"
-                  :disable="nuevaFactura"
-                />
-
-                <q-btn
-                  flat
-                  round
-                  icon="close"
-                  color="white"
-                  v-close-popup
-                />
-              </div>
-            </q-card-section>
-              <q-separator />
+          <q-dialog v-model="showNuevaFactura">
+            <q-card style="width: 68vw; max-width: 100%">
               <q-card-section
-                class="q-pa-sm q-ma-md bg-grey-2 row"
+                class="q-py-sm q-px-sm bg-primary"
+                style="display: flex; align-items: center; justify-content: space-between"
               >
-                <div
-                  class="col-6"
-                >
-                  <q-card-section
-                    class="bg-grey-4 q-mr-sm"
-                    flat
-                  >
-                  <DatosEmpresa/>
+                <div class="text-white text-h6 q-pa-sm">Factura de Venta:</div>
+
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <div class="text-weight-bold text-white">Estado factura:</div>
+
+                  <q-select
+                    filled
+                    dense
+                    v-model="estado_nueva"
+                    :options="options_estado"
+                    label="Estado"
+                    style="width: 150px"
+                    class="bg-grey-5"
+                    :disable="nuevaFactura"
+                  />
+
+                  <q-btn flat round icon="close" color="white" v-close-popup />
+                </div>
+              </q-card-section>
+              <q-separator />
+              <q-card-section class="q-pa-sm q-ma-md bg-grey-2 row">
+                <div class="col-6">
+                  <q-card-section class="bg-grey-4 q-mr-sm" flat>
+                    <DatosEmpresa />
                   </q-card-section>
                 </div>
-                <div
-                  class="col-6"
-                >
-                  <q-card-section
-                    class="bg-grey-3"
-                    flat
-                  >
-                  <DatosCliente/>
+                <div class="col-6">
+                  <q-card-section class="bg-grey-3 q-ma-none" flat>
+                    <DatosCliente />
                   </q-card-section>
                 </div>
               </q-card-section>
@@ -270,145 +232,99 @@
   </q-card>
 
   <q-dialog v-model="showEditarFactura">
-    <q-card
-      style="width:68vw; max-width: 100%; "
-    >
+    <q-card style="width: 68vw; max-width: 100%">
       <q-card-section
         class="q-py-sm q-px-sm bg-primary"
-        style="display: flex; align-items: center; justify-content: space-between;"
+        style="display: flex; align-items: center; justify-content: space-between"
       >
-        <div class="text-white text-h6 q-pa-sm">
-          Factura de Venta:
+        <div class="text-white text-h6 q-pa-sm">Factura de Venta:</div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <div class="text-weight-bold text-white">Estado factura:</div>
+          <q-select
+            filled
+            dense
+            v-model="estado_nueva"
+            :options="options_estado"
+            label="Estado"
+            style="width: 150px"
+            class="bg-grey-5"
+            :disable="nuevaFactura"
+          />
+
+          <q-btn
+            label="ACCIONES"
+            icon="add"
+            color="white"
+            class="q-ml-md custom-btn-acciones"
+            stack
+            dense
+            flat
+          />
+
+          <q-btn flat round icon="close" color="white" v-close-popup />
         </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <div class="text-weight-bold text-white">
-            Estado factura:
-          </div>
-            <q-select
-              filled
-              dense
-              v-model="estado_nueva"
-              :options="options_estado"
-              label="Estado"
-              style="width: 150px;"
-              class="bg-grey-5"
-              :disable="nuevaFactura"
-            />
+      </q-card-section>
+      <q-separator />
+      <q-card-section class="q-pa-sm q-mx-md q-mt-md q-mb-md bg-grey-2 row">
+        <div class="col-6">
+          <q-card-section class="bg-grey-4 q-mr-sm" flat>
+            <DatosEmpresa />
+          </q-card-section>
+        </div>
+        <div class="col-6">
+          <q-card-section class="bg-grey-3" flat>
+            <DatosClienteEditar />
+          </q-card-section>
+        </div>
+      </q-card-section>
 
-            <q-btn
-              label="ACCIONES"
-              icon="add"
-              color="white"
-              class="q-ml-md custom-btn-acciones"
-              stack
-              dense
-              flat
-            />
-
-            <q-btn
-              flat
-              round
-              icon="close"
-              color="white"
-              v-close-popup
-            />
-            </div>
-            </q-card-section>
-              <q-separator />
-              <q-card-section
-                class="q-pa-sm q-mx-md q-mt-md q-mb-md bg-grey-2 row"
-              >
-                <div
-                  class="col-6"
-                >
-                  <q-card-section
-                    class="bg-grey-4 q-mr-sm"
-                    flat
-                  >
-                  <DatosEmpresa/>
-                  </q-card-section>
-                </div>
-                <div
-                  class="col-6"
-                >
-                  <q-card-section
-                    class="bg-grey-3"
-                    flat
-                  >
-                  <DatosClienteEditar/>
-                  </q-card-section>
-                </div>
-              </q-card-section>
-
-              <q-card-section>
-                <div
-                  class="col-12"
-                >
-                  <q-card-section
-                    class="bg-grey-2"
-                    flat
-                  >
-                  <FechaEmisionEditar/>
-                  </q-card-section>
-                </div>
-              </q-card-section>
-              <q-card-section>
-                <div
-                  class="col-12"
-                >
-                  <q-card-section
-                    class="bg-grey-2"
-                    flat
-                  >
-                  <NumeroCuentaEditar/>
-                  </q-card-section>
-                </div>
-              </q-card-section>
-              <q-card-section>
-                <div
-                  class="col-12"
-                >
-                  <q-card-section
-                    class="bg-grey-2"
-                    flat
-                  >
-                  Tabla
-                  </q-card-section>
-                </div>
-              </q-card-section>
-              <q-card-section>
-                <div
-                  class="col-12"
-                >
-                  <q-card-section
-                    class="bg-grey-2"
-                    flat
-                  >
-                  Notas
-                  </q-card-section>
-                </div>
-              </q-card-section>
-            </q-card>
-      </q-dialog>
+      <q-card-section>
+        <div class="col-12">
+          <q-card-section class="bg-grey-2" flat>
+            <FechaEmisionEditar />
+          </q-card-section>
+        </div>
+      </q-card-section>
+      <q-card-section>
+        <div class="col-12">
+          <q-card-section class="bg-grey-2" flat>
+            <NumeroCuentaEditar />
+          </q-card-section>
+        </div>
+      </q-card-section>
+      <q-card-section>
+        <div class="col-12">
+          <q-card-section class="bg-grey-2" flat>
+            <TablaEditar />
+          </q-card-section>
+        </div>
+      </q-card-section>
+      <q-card-section>
+        <div class="col-12">
+          <q-card-section class="bg-grey-2" flat> Notas </q-card-section>
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
 import { ref, computed } from 'vue'
 import DatosEmpresa from './DatosEmpresa.vue'
-import DatosCliente from './DatosCliente.vue';
-import DatosClienteEditar from './DatosClienteEditar.vue';
-import FechaEmisionEditar from './FechaEmisionEditar.vue';
-import NumeroCuentaEditar from './NumeroCuentaEditar.vue';
-
+import DatosCliente from './DatosCliente.vue'
+import DatosClienteEditar from './DatosClienteEditar.vue'
+import FechaEmisionEditar from './FechaEmisionEditar.vue'
+import NumeroCuentaEditar from './NumeroCuentaEditar.vue'
+import TablaEditar from './TablaEditar.vue'
 
 export default {
-
   components: {
     DatosEmpresa,
     DatosCliente,
     DatosClienteEditar,
     FechaEmisionEditar,
-    NumeroCuentaEditar
+    NumeroCuentaEditar,
+    TablaEditar,
   },
 
   setup() {
@@ -485,14 +401,13 @@ export default {
       showNuevaFactura,
       estado_nueva,
       nuevaFactura,
-      showEditarFactura
+      showEditarFactura,
     }
   },
 }
 </script>
 
 <style>
-
 .custom-btn-acciones .q-btn__content {
   flex-direction: column-reverse;
 }
@@ -500,5 +415,4 @@ export default {
 .custom-btn-acciones .q-icon {
   font-size: 32px;
 }
-
 </style>
