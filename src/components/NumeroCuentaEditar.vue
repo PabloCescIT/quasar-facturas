@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row justify-between items-center q-py-sm"
+    class="row justify-between items-center"
     style="display: flex; align-items: center; justify-content: space-between"
   >
     <div class="q-gutter-x-xl">

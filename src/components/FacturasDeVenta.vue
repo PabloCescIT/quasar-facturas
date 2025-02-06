@@ -93,9 +93,8 @@
                 stack
                 dense
                 flat
-                @click="
-                  showNuevaFactura = true
-                  nuevaFactura = true
+                @click="showNuevaFactura = true,
+                  nuevaFactura = true,
                   estado_nueva = 'Borrador'
                 "
               />
@@ -252,6 +251,16 @@
           />
 
           <q-btn
+            label="IMPRIMIR"
+            icon="picture_as_pdf"
+            color="white"
+            class="q-ml-md custom-btn-acciones"
+            stack
+            dense
+            flat
+          />
+
+          <q-btn
             label="ACCIONES"
             icon="add"
             color="white"
@@ -287,21 +296,23 @@
       </q-card-section>
       <q-card-section>
         <div class="col-12">
-          <q-card-section class="bg-grey-2" flat>
+          <q-card-section class="bg-grey-2 q-pb-xs" flat>
             <NumeroCuentaEditar />
           </q-card-section>
         </div>
       </q-card-section>
       <q-card-section>
         <div class="col-12">
-          <q-card-section class="bg-grey-2" flat>
+          <q-card-section class="bg-grey-2 q-px-none" flat >
             <TablaEditar />
           </q-card-section>
         </div>
       </q-card-section>
       <q-card-section>
         <div class="col-12">
-          <q-card-section class="bg-grey-2" flat> Notas </q-card-section>
+          <q-card-section class="bg-grey-2" flat>
+            <NotasFacturaEditar/>
+          </q-card-section>
         </div>
       </q-card-section>
     </q-card>
@@ -316,6 +327,7 @@ import DatosClienteEditar from './DatosClienteEditar.vue'
 import FechaEmisionEditar from './FechaEmisionEditar.vue'
 import NumeroCuentaEditar from './NumeroCuentaEditar.vue'
 import TablaEditar from './TablaEditar.vue'
+import NotasFacturaEditar from './NotasFacturaEditar.vue'
 
 export default {
   components: {
@@ -325,6 +337,7 @@ export default {
     FechaEmisionEditar,
     NumeroCuentaEditar,
     TablaEditar,
+    NotasFacturaEditar
   },
 
   setup() {
