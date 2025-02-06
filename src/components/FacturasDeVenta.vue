@@ -93,9 +93,8 @@
                 stack
                 dense
                 flat
-                @click="showNuevaFactura = true,
-                  nuevaFactura = true,
-                  estado_nueva = 'Borrador'
+                @click="
+                  ((showNuevaFactura = true), (nuevaFactura = true), (estado_nueva = 'Borrador'))
                 "
               />
             </div>
@@ -303,7 +302,7 @@
       </q-card-section>
       <q-card-section>
         <div class="col-12">
-          <q-card-section class="bg-grey-2 q-px-none" flat >
+          <q-card-section class="bg-grey-2 q-px-none" flat>
             <TablaEditar />
           </q-card-section>
         </div>
@@ -311,8 +310,21 @@
       <q-card-section>
         <div class="col-12">
           <q-card-section class="bg-grey-2" flat>
-            <NotasFacturaEditar/>
+            <NotasFacturaEditar />
           </q-card-section>
+        </div>
+      </q-card-section>
+      <q-card-section
+        class="q-pa-sm q-mx-sm q-mt-sm q-mb-md bg-white row"
+        style="display: flex; align-items: center; justify-content: space-between"
+      >
+        <div class="col-3">
+          <q-card-section class="bg-grey-2" flat>
+            <TablaIzqEditar />
+          </q-card-section>
+        </div>
+        <div class="col-3">
+          <q-card-section class="bg-grey-2" flat> Tabla derecha </q-card-section>
         </div>
       </q-card-section>
     </q-card>
@@ -328,6 +340,7 @@ import FechaEmisionEditar from './FechaEmisionEditar.vue'
 import NumeroCuentaEditar from './NumeroCuentaEditar.vue'
 import TablaEditar from './TablaEditar.vue'
 import NotasFacturaEditar from './NotasFacturaEditar.vue'
+import TablaIzqEditar from './TablaIzqEditar.vue'
 
 export default {
   components: {
@@ -337,7 +350,8 @@ export default {
     FechaEmisionEditar,
     NumeroCuentaEditar,
     TablaEditar,
-    NotasFacturaEditar
+    NotasFacturaEditar,
+    TablaIzqEditar,
   },
 
   setup() {
