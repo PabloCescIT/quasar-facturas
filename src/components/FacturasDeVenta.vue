@@ -316,15 +316,17 @@
       </q-card-section>
       <q-card-section
         class="q-pa-sm q-mx-sm q-mt-sm q-mb-md bg-white row"
-        style="display: flex; align-items: center; justify-content: space-between"
+        style="display: flex; justify-content: space-between"
       >
         <div class="col-3">
-          <q-card-section class="bg-grey-2" flat>
+          <q-card-section class="bg-grey-2 q-px-none" flat>
             <TablaIzqEditar />
           </q-card-section>
         </div>
         <div class="col-3">
-          <q-card-section class="bg-grey-2" flat> Tabla derecha </q-card-section>
+          <q-card-section class="bg-grey-2 q-px-none" flat>
+            <TablaDerEditar />
+          </q-card-section>
         </div>
       </q-card-section>
     </q-card>
@@ -341,6 +343,7 @@ import NumeroCuentaEditar from './NumeroCuentaEditar.vue'
 import TablaEditar from './TablaEditar.vue'
 import NotasFacturaEditar from './NotasFacturaEditar.vue'
 import TablaIzqEditar from './TablaIzqEditar.vue'
+import TablaDerEditar from './TablaDerEditar.vue'
 
 export default {
   components: {
@@ -352,6 +355,7 @@ export default {
     TablaEditar,
     NotasFacturaEditar,
     TablaIzqEditar,
+    TablaDerEditar,
   },
 
   setup() {

@@ -13,7 +13,6 @@
         class="bg-grey-2"
         hide-pagination
       >
-
         <template v-slot:body-cell-ivaMonetarioIzq="props">
           <q-td :props="props">
             {{ formatValue(props.row.ivaMonetarioIzq) }}
@@ -29,7 +28,6 @@
         <template v-slot:body-cell-ivaPorcentajeIzq="props">
           <q-td :props="props"> {{ props.row.ivaPorcentajeIzq }} % </q-td>
         </template>
-
       </q-table>
     </div>
   </div>
@@ -41,26 +39,27 @@ import { ref } from 'vue'
 export default {
   setup() {
     const columnsTablaIzqEditar = [
-
       {
         name: 'baseImponibleIzqEditar',
         align: 'left',
         label: 'B.I.',
         field: 'baseImponibleIzqEditar',
+        sortable: true
       },
       {
         name: 'ivaPorcentajeIzq',
         align: 'right',
         label: '% IVA',
         field: 'ivaPorcentajeIzq',
+        sortable: true
       },
       {
         name: 'ivaMonetarioIzq',
         align: 'right',
         label: '€ IVA',
         field: 'ivaMonetarioIzq',
-      }
-
+        sortable: true
+      },
     ]
 
     const rowsTablaIzqEditar = ref([
