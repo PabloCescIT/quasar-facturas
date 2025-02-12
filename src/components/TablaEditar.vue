@@ -59,74 +59,39 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const columnsTablaEditar = [
-      { name: 'codigoTablaEditar', align: 'left', label: 'Código', field: 'codigoTablaEditar' },
-      {
-        name: 'descripcionTablaEditar',
-        align: 'left',
-        label: 'Descripción',
-        field: 'descripcionTablaEditar',
-      },
-      {
-        name: 'cantidadTablaEditar',
-        align: 'right',
-        label: 'Cantidad',
-        field: 'cantidadTablaEditar',
-      },
-      {
-        name: 'precioUnidadTablaEditar',
-        align: 'right',
-        label: 'Precio/Unidad',
-        field: 'precioUnidadTablaEditar',
-      },
-      {
-        name: 'descuentoTablaEditar',
-        align: 'center',
-        label: '% Dto',
-        field: 'descuentoTablaEditar',
-      },
-      { name: 'ivaTablaEditar', align: 'center', label: '% IVA', field: 'ivaTablaEditar' },
-      { name: 'reTablaEditar', align: 'center', label: '% R.E.', field: 'reTablaEditar' },
-      { name: 'biTablaEditar', align: 'right', label: 'B.I.', field: 'biTablaEditar' },
-      {
-        name: 'accionesTablaEditar',
-        align: 'right',
-        label: 'Acciones',
-        field: 'accionesTablaEditar',
-      },
-    ]
+const columnsTablaEditar = [
+  { name: 'codigoTablaEditar', align: 'left', label: 'Código', field: 'codigoTablaEditar' },
+  { name: 'descripcionTablaEditar', align: 'left', label: 'Descripción', field: 'descripcionTablaEditar' },
+  { name: 'cantidadTablaEditar', align: 'right', label: 'Cantidad', field: 'cantidadTablaEditar' },
+  { name: 'precioUnidadTablaEditar', align: 'right', label: 'Precio/Unidad', field: 'precioUnidadTablaEditar' },
+  { name: 'descuentoTablaEditar', align: 'center', label: '% Dto', field: 'descuentoTablaEditar' },
+  { name: 'ivaTablaEditar', align: 'center', label: '% IVA', field: 'ivaTablaEditar' },
+  { name: 'reTablaEditar', align: 'center', label: '% R.E.', field: 'reTablaEditar' },
+  { name: 'biTablaEditar', align: 'right', label: 'B.I.', field: 'biTablaEditar' },
+  { name: 'accionesTablaEditar', align: 'right', label: 'Acciones', field: 'accionesTablaEditar' },
+]
 
-    const rowsTablaEditar = ref([
-      {
-        codigoTablaEditar: '001',
-        descripcionTablaEditar: 'Camiseta',
-        cantidadTablaEditar: 1,
-        precioUnidadTablaEditar: 10.5,
-        descuentoTablaEditar: 5,
-        ivaTablaEditar: 21,
-        reTablaEditar: 5.2,
-        biTablaEditar: 10.5,
-        accionesTablaEditar: '',
-      },
-    ])
-
-    const formatValue = (value) => {
-      if (typeof value === 'number') {
-        return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
-      }
-      return value || 'N/A'
-    }
-
-    return {
-      columnsTablaEditar,
-      rowsTablaEditar,
-      formatValue,
-    }
+const rowsTablaEditar = ref([
+  {
+    codigoTablaEditar: '001',
+    descripcionTablaEditar: 'Camiseta',
+    cantidadTablaEditar: 1,
+    precioUnidadTablaEditar: 10.5,
+    descuentoTablaEditar: 5,
+    ivaTablaEditar: 21,
+    reTablaEditar: 5.2,
+    biTablaEditar: 10.5,
+    accionesTablaEditar: '',
   },
+])
+
+const formatValue = (value) => {
+  if (typeof value === 'number') {
+    return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
+  }
+  return value || 'N/A'
 }
 </script>

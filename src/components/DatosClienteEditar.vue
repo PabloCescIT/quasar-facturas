@@ -1,17 +1,17 @@
 <template>
   <div class="col-12 text-weight-bold q-mb-sm">
-    Datos de la empresa
+    Datos del cliente
   </div>
   <div class="row justify-between items-center q-mb-md">
     <div class="col-9 ">
-      Pablo SL
+      Pablo de Maya
     </div>
     <div class="col-3">
       39419918B
     </div>
   </div>
   <div class="col-12 q-mb-md">
-    Carrer Josep Pla
+    Carrer Josep Pla 13 4A
   </div>
   <div class="row justify-between items-center">
     <div class="col-9 ">
@@ -24,18 +24,8 @@
 
 </template>
 
-<script>
+<script setup>
 
-
-export default {
-  setup() {
-    return {
-
-    }
-  },
-}
 </script>
 
-<style scoped>
 
-</style>

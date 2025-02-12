@@ -75,17 +75,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    return {
-      model_descuento: ref(0),
-      model_irpf: ref(0),
-    }
-  },
-}
+const model_descuento = ref(0)
+const model_irpf = ref(0)
 </script>
 
 <style scoped>

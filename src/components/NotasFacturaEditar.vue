@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-between items-center q-py-sm">
     <div class="row q-gutter-x-xl">
-      <q-input v-model="text_notasFactura" label="Notas de factura" dense style="width: 1000px" />
+      <q-input v-model="notasFactura" label="Notas de factura" dense style="width: 1000px" />
     </div>
 
     <div class="row q-gutter-x-sm justify-end">
@@ -11,16 +11,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-
-
-    return {
-      notasFactura: ref(''),
-    }
-  },
-}
+const notasFactura = ref('')
 </script>
+

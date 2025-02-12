@@ -27,19 +27,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const fechaEmisionEditar = ref(null)
-    const fechaVencimientoEditar = ref(null)
-
-    return {
-      fechaEmisionEditar,
-      fechaVencimientoEditar,
-      text_referencia: ref(''),
-    }
-  },
-}
+const fechaEmisionEditar = ref(null)
+const fechaVencimientoEditar = ref(null)
+const text_referencia = ref('')
 </script>

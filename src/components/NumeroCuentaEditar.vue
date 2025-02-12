@@ -32,32 +32,23 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const numeroCuentaOptions = ['123', '456', '789', '000']
-    const optionsNumeroCuenta = ref(numeroCuentaOptions)
+const numeroCuentaOptions = ['123', '456', '789', '000']
+const optionsNumeroCuenta = ref(numeroCuentaOptions)
+const modelNumeroCuenta = ref(null)
 
-    const filterFnNumeroCuenta = (val, update, abort) => {
-      if (val.length < 2) {
-        abort()
-        return
-      }
-      update(() => {
-        const needle = val.toLowerCase()
-        optionsNumeroCuenta.value = numeroCuentaOptions.filter((v) =>
-          v.toLowerCase().includes(needle),
-        )
-      })
-    }
-
-    return {
-      optionsNumeroCuenta,
-      filterFnNumeroCuenta,
-      numeroCuentaOptions,
-    }
-  },
+const filterFnNumeroCuenta = (val, update, abort) => {
+  if (val.length < 2) {
+    abort()
+    return
+  }
+  update(() => {
+    const needle = val.toLowerCase()
+    optionsNumeroCuenta.value = numeroCuentaOptions.filter((v) =>
+      v.toLowerCase().includes(needle)
+    )
+  })
 }
 </script>

@@ -110,125 +110,39 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  components: {},
+const texto_codigo_cliente = ref('')
+const texto_nif = ref('')
+const texto_nombre = ref('')
+const texto_direccion = ref('')
+const texto_codigo_postal = ref('')
+const texto_pais = ref('')
+const texto_telefono_fijo = ref('')
+const texto_telefono_movil = ref('')
+const texto_email = ref('')
+const texto_web = ref('')
 
-  setup() {
-    return {
-      select_provincias: ref(null),
-      options_provincias: [
-        'Álava',
-        'Albacete',
-        'Alicante',
-        'Almería',
-        'Asturias',
-        'Ávila',
-        'Badajoz',
-        'Baleares',
-        'Barcelona',
-        'Bizkaia',
-        'Burgos',
-        'Cáceres',
-        'Cádiz',
-        'Cantabria',
-        'Castellón',
-        'Ceuta',
-        'Ciudad Real',
-        'Córdoba',
-        'Cuenca',
-        'Girona',
-        'Granada',
-        'Guadalajara',
-        'Gipuzkoa',
-        'Huelva',
-        'Huesca',
-        'Jaén',
-        'La Coruña',
-        'La Rioja',
-        'Las Palmas',
-        'León',
-        'Lleida',
-        'Lugo',
-        'Madrid',
-        'Málaga',
-        'Melilla',
-        'Murcia',
-        'Navarra',
-        'Ourense',
-        'Palencia',
-        'Pontevedra',
-        'Salamanca',
-        'Santa Cruz de Tenerife',
-        'Segovia',
-        'Sevilla',
-        'Soria',
-        'Tarragona',
-        'Teruel',
-        'Toledo',
-        'Valencia',
-        'Valladolid',
-        'Zamora',
-        'Zaragoza',
-      ],
+const select_provincias = ref(null)
 
-      select_poblacion: ref(null),
-      options_poblacion: [
-        'Albacete',
-        'Alicante',
-        'Almería',
-        'Ávila',
-        'Badajoz',
-        'Barcelona',
-        'Bilbao',
-        'Burgos',
-        'Cáceres',
-        'Cádiz',
-        'Castellón de la Plana',
-        'Ceuta',
-        'Ciudad Real',
-        'Córdoba',
-        'Cuenca',
-        'Gerona',
-        'Granada',
-        'Guadalajara',
-        'Huelva',
-        'Huesca',
-        'Jaén',
-        'Las Palmas de Gran Canaria',
-        'León',
-        'Lérida',
-        'Logroño',
-        'Lugo',
-        'Madrid',
-        'Málaga',
-        'Melilla',
-        'Murcia',
-        'Orense',
-        'Oviedo',
-        'Palencia',
-        'Palma de Mallorca',
-        'Pamplona',
-        'Pontevedra',
-        'Salamanca',
-        'San Sebastián',
-        'Santa Cruz de Tenerife',
-        'Santander',
-        'Segovia',
-        'Sevilla',
-        'Soria',
-        'Tarragona',
-        'Teruel',
-        'Toledo',
-        'Valencia',
-        'Valladolid',
-        'Vitoria',
-        'Zamora',
-        'Zaragoza',
-      ],
-    }
-  },
-}
+const options_provincias = [
+  'Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Ávila', 'Badajoz', 'Baleares', 'Barcelona', 'Bizkaia',
+  'Burgos', 'Cáceres', 'Cádiz', 'Cantabria', 'Castellón', 'Ceuta', 'Ciudad Real', 'Córdoba', 'Cuenca', 'Girona',
+  'Granada', 'Guadalajara', 'Gipuzkoa', 'Huelva', 'Huesca', 'Jaén', 'La Coruña', 'La Rioja', 'Las Palmas', 'León',
+  'Lleida', 'Lugo', 'Madrid', 'Málaga', 'Melilla', 'Murcia', 'Navarra', 'Ourense', 'Palencia', 'Pontevedra', 'Salamanca',
+  'Santa Cruz de Tenerife', 'Segovia', 'Sevilla', 'Soria', 'Tarragona', 'Teruel', 'Toledo', 'Valencia', 'Valladolid',
+  'Zamora', 'Zaragoza'
+]
+
+const select_poblacion = ref(null)
+
+const options_poblacion = [
+  'Albacete', 'Alicante', 'Almería', 'Ávila', 'Badajoz', 'Barcelona', 'Bilbao', 'Burgos', 'Cáceres', 'Cádiz',
+  'Castellón de la Plana', 'Ceuta', 'Ciudad Real', 'Córdoba', 'Cuenca', 'Gerona', 'Granada', 'Guadalajara', 'Huelva',
+  'Huesca', 'Jaén', 'Las Palmas de Gran Canaria', 'León', 'Lérida', 'Logroño', 'Lugo', 'Madrid', 'Málaga', 'Melilla',
+  'Murcia', 'Orense', 'Oviedo', 'Palencia', 'Palma de Mallorca', 'Pamplona', 'Pontevedra', 'Salamanca', 'San Sebastián',
+  'Santa Cruz de Tenerife', 'Santander', 'Segovia', 'Sevilla', 'Soria', 'Tarragona', 'Teruel', 'Toledo', 'Valencia',
+  'Valladolid', 'Vitoria', 'Zamora', 'Zaragoza'
+]
 </script>

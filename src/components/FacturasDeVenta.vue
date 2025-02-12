@@ -333,8 +333,9 @@
   </q-dialog>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from 'vue'
+
 import DatosEmpresa from './DatosEmpresa.vue'
 import DatosCliente from './DatosCliente.vue'
 import DatosClienteEditar from './DatosClienteEditar.vue'
@@ -345,100 +346,63 @@ import NotasFacturaEditar from './NotasFacturaEditar.vue'
 import TablaIzqEditar from './TablaIzqEditar.vue'
 import TablaDerEditar from './TablaDerEditar.vue'
 
-export default {
-  components: {
-    DatosEmpresa,
-    DatosCliente,
-    DatosClienteEditar,
-    FechaEmisionEditar,
-    NumeroCuentaEditar,
-    TablaEditar,
-    NotasFacturaEditar,
-    TablaIzqEditar,
-    TablaDerEditar,
+
+const fechaInicio = ref(null)
+const fechaFinal = ref(null)
+const estado = ref(null)
+const estado_nueva = ref(null)
+const showNuevaFactura = ref(false)
+const nuevaFactura = ref(false)
+const showEditarFactura = ref(false)
+
+const options_estado = ref(['Borrador', 'Factura', 'Pendiente de pago', 'Cobrada'])
+
+const columns_facturasVenta = [
+  { name: 'numero_factura', align: 'left', label: 'Número de factura', field: 'numero_factura', sortable: true },
+  { name: 'cliente', label: 'Cliente', field: 'cliente', sortable: true },
+  { name: 'referencia', label: 'Referencia', field: 'referencia', sortable: true },
+  { name: 'fecha_factura', label: 'Fecha factura', field: 'fecha_factura', sortable: true },
+  { name: 'base_imponible', label: 'Base imponible', field: 'base_imponible', sortable: true },
+  { name: 'total', label: 'Total', field: 'total', sortable: true },
+  { name: 'estado', label: 'Estado', field: 'estado', sortable: true },
+  { name: 'acciones_factura', label: 'Acciones', field: 'acciones', sortable: true },
+]
+
+const rows_facturasVenta = ref([
+  {
+    numero_factura: '2024/00015',
+    cliente: 'Pablo',
+    referencia: '',
+    fecha_factura: '24-01-2025',
+    base_imponible: 220,
+    total: 226.2,
+    estado: '1 Borrador',
+    acciones: '',
   },
+])
 
-  setup() {
-    const fechaInicio = ref(null)
-    const fechaFinal = ref(null)
-    const estado = ref(null)
-    const estado_nueva = ref(null)
-    const showNuevaFactura = ref(false)
-    const nuevaFactura = ref(false)
-    const showEditarFactura = ref(false)
+// const formatValue = (value) => {
+//   if (typeof value === 'number') {
+//     return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
+//   } else if (!value) {
+//     return 'N/A'
+//   }
+//   return value
+// }
 
-    const options_estado = ref(['Borrador', 'Factura', 'Pendiente de pago', 'Cobrada'])
+const totales = computed(() => {
+  let base_imponible = 0
+  let total = 0
+  rows_facturasVenta.value.forEach((row) => {
+    base_imponible += row.base_imponible || 0
+    total += row.total || 0
+  })
+  return { base_imponible, total }
+})
 
-    const columns_facturasVenta = [
-      {
-        name: 'numero_factura',
-        align: 'left',
-        label: 'Número de factura',
-        field: 'numero_factura',
-        sortable: true,
-      },
-      { name: 'cliente', label: 'Cliente', field: 'cliente', sortable: true },
-      { name: 'referencia', label: 'Referencia', field: 'referencia', sortable: true },
-      { name: 'fecha_factura', label: 'Fecha factura', field: 'fecha_factura', sortable: true },
-      { name: 'base_imponible', label: 'Base imponible', field: 'base_imponible', sortable: true },
-      { name: 'total', label: 'Total', field: 'total', sortable: true },
-      { name: 'estado', label: 'Estado', field: 'estado', sortable: true },
-      { name: 'acciones_factura', label: 'Acciones', field: 'acciones', sortable: true },
-    ]
-
-    const rows_facturasVenta = ref([
-      {
-        numero_factura: '2024/00015',
-        cliente: 'Pablo',
-        referencia: '',
-        fecha_factura: '24-01-2025',
-        base_imponible: 220,
-        total: 226.2,
-        estado: '1 Borrador',
-        acciones: '',
-      },
-    ])
-
-    const formatValue = (value) => {
-      if (typeof value === 'number') {
-        return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
-      } else if (!value) {
-        return 'N/A'
-      }
-      return value
-    }
-
-    const totales = computed(() => {
-      let base_imponible = 0
-      let total = 0
-      rows_facturasVenta.value.forEach((row) => {
-        base_imponible += row.base_imponible || 0
-        total += row.total || 0
-      })
-      return { base_imponible, total }
-    })
-
-    return {
-      fechaInicio,
-      fechaFinal,
-      estado,
-      options_estado,
-      search: ref(''),
-      right: ref(false),
-      columns_facturasVenta,
-      rows_facturasVenta,
-      formatValue,
-      totales,
-      showNuevaFactura,
-      estado_nueva,
-      nuevaFactura,
-      showEditarFactura,
-    }
-  },
-}
 </script>
 
-<style>
+<style scoped>
 .custom-btn-acciones .q-btn__content {
   flex-direction: column-reverse;
 }

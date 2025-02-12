@@ -33,55 +33,45 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    const columnsTablaIzqEditar = [
-      {
-        name: 'baseImponibleIzqEditar',
-        align: 'left',
-        label: 'B.I.',
-        field: 'baseImponibleIzqEditar',
-        sortable: true
-      },
-      {
-        name: 'ivaPorcentajeIzq',
-        align: 'right',
-        label: '% IVA',
-        field: 'ivaPorcentajeIzq',
-        sortable: true
-      },
-      {
-        name: 'ivaMonetarioIzq',
-        align: 'right',
-        label: '€ IVA',
-        field: 'ivaMonetarioIzq',
-        sortable: true
-      },
-    ]
-
-    const rowsTablaIzqEditar = ref([
-      {
-        baseImponibleIzqEditar: 0.01,
-        ivaPorcentajeIzq: 21,
-        ivaMonetarioIzq: 0,
-      },
-    ])
-
-    const formatValue = (value) => {
-      if (typeof value === 'number') {
-        return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
-      }
-      return value || 'N/A'
-    }
-
-    return {
-      columnsTablaIzqEditar,
-      rowsTablaIzqEditar,
-      formatValue,
-    }
+const columnsTablaIzqEditar = [
+  {
+    name: 'baseImponibleIzqEditar',
+    align: 'left',
+    label: 'B.I.',
+    field: 'baseImponibleIzqEditar',
+    sortable: true
   },
+  {
+    name: 'ivaPorcentajeIzq',
+    align: 'right',
+    label: '% IVA',
+    field: 'ivaPorcentajeIzq',
+    sortable: true
+  },
+  {
+    name: 'ivaMonetarioIzq',
+    align: 'right',
+    label: '€ IVA',
+    field: 'ivaMonetarioIzq',
+    sortable: true
+  },
+]
+
+const rowsTablaIzqEditar = ref([
+  {
+    baseImponibleIzqEditar: 0.01,
+    ivaPorcentajeIzq: 21,
+    ivaMonetarioIzq: 0,
+  },
+])
+
+const formatValue = (value) => {
+  if (typeof value === 'number') {
+    return value.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
+  }
+  return value || 'N/A'
 }
 </script>
